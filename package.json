@@ -10,6 +10,7 @@
     "@nx/next": "17.2.8",
     "@prisma/client": "^5.8.1",
     "axios": "^1.0.0",
+    "cors": "^2.8.5",
     "expo": "49.0.16",
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
