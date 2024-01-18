@@ -19,7 +19,7 @@
         "libs/interface/src/index.ts"
       ],
       "@nx-next-react-native-express/prisma": ["libs/prisma/src/index.ts"],
-      "@nx-next-react-native-express/utilities": ["libs/utilities/src/index.ts"]
+      "@nx-next-react-native-express/utilities": ["libs/utilities/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]
