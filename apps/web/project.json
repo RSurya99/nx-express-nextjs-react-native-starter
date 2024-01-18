@@ -22,6 +22,7 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
+        "port": 4000,
         "buildTarget": "web:build",
         "dev": true
       },
