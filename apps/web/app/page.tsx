@@ -1,3 +1,4 @@
+import { utilities } from '@nx-next-react-native-express/utilities';
 import styles from './page.module.css';
 
 export default async function Index() {
@@ -13,7 +14,7 @@ export default async function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome web 👋
+              Welcome {utilities()} 👋
             </h1>
           </div>
 
