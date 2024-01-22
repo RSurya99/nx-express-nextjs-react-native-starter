@@ -1,14 +1,9 @@
 'use client'
 
+import { INIT_TODO } from "@nx-next-react-native-express/constant"
 import { TTodo } from "@nx-next-react-native-express/interface"
 import { twMerge } from 'tailwind-merge'
 import { useCallback, useEffect, useState } from "react"
-
-const INIT_TODO: TTodo = {
-  id: '',
-  title: '',
-  status: false
-}
 
 export default function Index() {
   const [showCreateDialog, setShowCreateDialog] = useState<boolean>(false)
@@ -116,12 +111,12 @@ export default function Index() {
             {editedData.id === todo.id ? (
               <input type="text" value={editedData?.title} onChange={(e) => setEditedData({ ...editedData, title: e.target.value })} />
             ) : (
-              <div className="p-2 flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <input onChange={(e) => updateTodoStatus(todo, e.target.checked)} type="checkbox" className="w-4 h-4" checked={todo.status} />
                 <h2 className={twMerge("text-xl font-semibold text-white", todo.status && 'line-through')}>{todo.title}</h2>
               </div>
             )}
-            <div className="p-2 space-x-2">
+            <div className="space-x-2">
               {editedData.id === todo.id ? (
                 <button onClick={() => updateTodo(editedData)} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white transition duration-300">Save</button>
               ) : (
