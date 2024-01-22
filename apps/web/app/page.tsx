@@ -11,6 +11,11 @@ export default function Index() {
   const [showCreateDialog, setShowCreateDialog] = useState<boolean>(false)
   const [editedData, setEditedData] = useState<TTodo>(INIT_TODO)
 
+  const handleCancelCreateModal = () => {
+    setShowCreateDialog(false)
+    setEditedData(INIT_TODO)
+  }
+
   const handleCreateTodo = async () => {
     await createTodo({ title: editedData.title })
     setShowCreateDialog(false)
@@ -36,7 +41,7 @@ export default function Index() {
           <input type="text" name="title" value={editedData.title} onChange={(e) => setEditedData({ ...editedData, title: e.target.value })} className="w-full px-4 py-2 border border-slate-300 rounded-md bg-slate-200 focus:" />
         </div>
         <div className="flex justify-end gap-2">
-          <button onClick={() => setShowCreateDialog(false)} className="px-4 py-2 bg-rose-500 text-white rounded-md">Cancel</button>
+          <button onClick={handleCancelCreateModal} className="px-4 py-2 bg-rose-500 text-white rounded-md">Cancel</button>
           <button onClick={handleCreateTodo} className="px-4 py-2 bg-slate-900 text-white rounded-md">Create</button>
         </div>
       </div>
