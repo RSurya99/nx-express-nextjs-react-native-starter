@@ -1,5 +1,8 @@
-import { TTodo } from '@nx-next-react-native-express/interface'
+// Prisma
 import { prisma } from "@nx-next-react-native-express/prisma";
+
+// Interface
+import { TTodo } from '@nx-next-react-native-express/interface'
 
 export const getTodos = async (req, res) => {
   try{

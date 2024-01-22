@@ -1,5 +1,10 @@
+// Express
 import express from 'express'
+
+// Controller
 import { createTodo, deleteTodo, getTodo, getTodos, updateTodo } from '../controller/todo.controller'
+
+// Validator
 import { todoValidator } from '../validator/todo.validator'
 
 const router = express.Router()

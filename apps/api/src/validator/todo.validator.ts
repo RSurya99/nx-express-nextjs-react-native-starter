@@ -1,4 +1,7 @@
+// Zod
 import { z } from 'zod';
+
+// Middleware
 import validatorHandler from '../middleware/validator.handler';
 
 export const todoValidator = (req, res, next) => {

@@ -1,6 +1,13 @@
+// Express
 import express from 'express';
+
+// Cors
 import cors from 'cors';
+
+// Path
 import * as path from 'path';
+
+// Routes
 import routes from './routes';
 
 const app = express();
