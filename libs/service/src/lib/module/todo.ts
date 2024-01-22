@@ -1,5 +1,8 @@
-import { TTodo } from '@nx-next-react-native-express/interface';
+// Fetch
 import { callApi } from "../callApi";
+
+// Interface
+import { TTodo } from '@nx-next-react-native-express/interface';
 
 export function todoIndexService(){
   const path = '/todo'
