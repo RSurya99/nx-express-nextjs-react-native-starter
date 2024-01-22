@@ -12,6 +12,5 @@ datasource db {
 model Todo {
   id            String     @default(cuid()) @id
   title         String
-  description   String
   status        Boolean     @default(false)
 }
