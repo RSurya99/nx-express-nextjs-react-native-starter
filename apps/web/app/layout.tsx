@@ -1,3 +1,4 @@
+import { TodoContextProvider } from '../context/TodoContext';
 import './global.css';
 
 export const metadata = {
@@ -12,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='bg-slate-900'>{children}</body>
+      <body className='bg-slate-900'>
+        <TodoContextProvider>
+        {children}
+        </TodoContextProvider>
+      </body>
     </html>
   );
 }
