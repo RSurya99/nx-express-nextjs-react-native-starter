@@ -1,9 +1,18 @@
 'use client'
 
-import { INIT_TODO } from "@nx-next-react-native-express/constant"
-import { TTodo } from "@nx-next-react-native-express/interface"
-import { twMerge } from 'tailwind-merge'
+// React
 import { useContext, useEffect, useState } from "react"
+
+// Constant
+import { INIT_TODO } from "@nx-next-react-native-express/constant"
+
+// Interface
+import { TTodo } from "@nx-next-react-native-express/interface"
+
+// Tailwind
+import { twMerge } from 'tailwind-merge'
+
+// Context
 import { TodoContext } from "../context/TodoContext"
 
 export default function Index() {

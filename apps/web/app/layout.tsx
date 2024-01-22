@@ -1,5 +1,8 @@
-import { TodoContextProvider } from '../context/TodoContext';
+// CSS
 import './global.css';
+
+// Context
+import { TodoContextProvider } from '../context/TodoContext';
 
 export const metadata = {
   title: 'Welcome to web',
