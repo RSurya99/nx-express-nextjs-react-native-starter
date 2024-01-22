@@ -3,82 +3,28 @@
 import { INIT_TODO } from "@nx-next-react-native-express/constant"
 import { TTodo } from "@nx-next-react-native-express/interface"
 import { twMerge } from 'tailwind-merge'
-import { useCallback, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { TodoContext } from "../context/TodoContext"
 
 export default function Index() {
+  const { getTodos, todos, createTodo, deleteTodo, updateTodo } = useContext(TodoContext)
   const [showCreateDialog, setShowCreateDialog] = useState<boolean>(false)
-  const [loading, setLoading] = useState<boolean>(false)
-  const [todos, setTodos] = useState<TTodo[]>([])
   const [editedData, setEditedData] = useState<TTodo>(INIT_TODO)
 
-  const fetchTodos = useCallback(async () => {
-    setLoading(true)
-    try{
-      const result = await fetch('http://localhost:3000/api/todo')
-      const response = await result.json()
-      setTodos(response.data)
-    }finally{
-      setLoading(false)
-    }
-  }, [])
+  const handleCreateTodo = async () => {
+    await createTodo({ title: editedData.title })
+    setShowCreateDialog(false)
+    setEditedData(INIT_TODO)
+  }
 
-  const updateTodo = useCallback(async (todo: TTodo) => {
-    setLoading(true)
-    try{
-      await fetch('http://localhost:3000/api/todo/' + todo.id, {
-        method: 'PUT',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(todo)
-      })
-      setEditedData(INIT_TODO)
-      await fetchTodos()
-    }finally{
-      setLoading(false)
-    }
-  }, [fetchTodos])
-
-  const createTodo = useCallback(async (todo: TTodo) => {
-    setLoading(true)
-    try{
-      await fetch('http://localhost:3000/api/todo', {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: todo.title,
-          status: todo.status
-        })
-      })
-      setEditedData(INIT_TODO)
-      await fetchTodos()
-      setShowCreateDialog(false)
-    }finally{
-      setLoading(false)
-    }
-  }, [fetchTodos])
-
-  const updateTodoStatus = useCallback(async (todo: TTodo, val: boolean) => {
-    updateTodo({ ...todo, status: val })
-  }, [updateTodo])
-
-  const deleteTodo = useCallback(async (id: string) => {
-    setLoading(true)
-    try{
-      await fetch('http://localhost:3000/api/todo/' + id, {
-        method: 'DELETE',
-      })
-      await fetchTodos()
-    }finally{
-      setLoading(false)
-    }
-  }, [fetchTodos])
+  const handleUpdateTodo = async () => {
+    await updateTodo(editedData.id, editedData)
+    setEditedData(INIT_TODO)
+  }
 
   useEffect(() => {
-    fetchTodos()
-  }, [fetchTodos])
+    getTodos()
+  }, [getTodos])
 
   return (
     <>
@@ -91,7 +37,7 @@ export default function Index() {
         </div>
         <div className="flex justify-end gap-2">
           <button onClick={() => setShowCreateDialog(false)} className="px-4 py-2 bg-rose-500 text-white rounded-md">Cancel</button>
-          <button onClick={() => createTodo(editedData)} className="px-4 py-2 bg-slate-900 text-white rounded-md">Create</button>
+          <button onClick={handleCreateTodo} className="px-4 py-2 bg-slate-900 text-white rounded-md">Create</button>
         </div>
       </div>
     </div>
@@ -102,23 +48,20 @@ export default function Index() {
         <button onClick={() => setShowCreateDialog(true)} className="px-3 py-1 rounded bg-slate-500 hover:bg-slate-600 text-white transition duration-300">Create Todo</button>
       </div>
       <div className="w-full space-y-2">
-        {loading ? (
-          <div className="text-center text-lg text-white">Loading...</div>
-        ) : (
-        todos.map((todo) => (
+        {todos.map((todo) => (
           <>
           <div className="flex items-center justify-between">
             {editedData.id === todo.id ? (
               <input type="text" value={editedData?.title} onChange={(e) => setEditedData({ ...editedData, title: e.target.value })} />
             ) : (
               <div className="flex items-center gap-2">
-                <input onChange={(e) => updateTodoStatus(todo, e.target.checked)} type="checkbox" className="w-4 h-4" checked={todo.status} />
+                <input onChange={(e) => updateTodo(todo.id, { ...todo, status: e.target.checked })} type="checkbox" className="w-4 h-4" checked={todo.status} />
                 <h2 className={twMerge("text-xl font-semibold text-white", todo.status && 'line-through')}>{todo.title}</h2>
               </div>
             )}
             <div className="space-x-2">
               {editedData.id === todo.id ? (
-                <button onClick={() => updateTodo(editedData)} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white transition duration-300">Save</button>
+                <button onClick={handleUpdateTodo} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white transition duration-300">Save</button>
               ) : (
                 <button onClick={() => setEditedData(todo)} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white transition duration-300">Edit</button>
               )}
@@ -126,7 +69,7 @@ export default function Index() {
             </div>
           </div>
           </>
-        )))}
+        ))}
       </div>
     </div>
     </>
