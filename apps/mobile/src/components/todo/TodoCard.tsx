@@ -1,8 +1,11 @@
 import { Text, TouchableOpacity, View } from "react-native"
 import { TTodo } from '@nx-next-react-native-express/interface'
 import { COLORS, SIZES } from "../../constants"
+import { useRouter } from "expo-router"
 
 const TodoCard = ({ todo }: { todo: TTodo }) => {
+  const router = useRouter()
+
   return (
     <View style={{
       flex: 1,
@@ -20,7 +23,7 @@ const TodoCard = ({ todo }: { todo: TTodo }) => {
           paddingVertical: SIZES.small / 1.5,
           backgroundColor: COLORS.warning,
           borderRadius: SIZES.small / 1.25,
-        }}>
+        }} onPress={() => router.push('/todo/' + todo.id)}>
           <Text style={{
             color: COLORS.white,
           }}>Edit</Text>

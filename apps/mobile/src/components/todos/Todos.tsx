@@ -3,8 +3,10 @@ import styles from "./todos.style"
 import { COLORS } from "../../constants"
 import { TTodo } from '@nx-next-react-native-express/interface'
 import TodoCard from "../todo/TodoCard"
+import { useRouter } from "expo-router"
 
 const Todos = () => {
+  const router = useRouter()
   const isLoading = false
   const error = false
   const todos: TTodo[] = [
@@ -24,7 +26,7 @@ const Todos = () => {
     <View>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Todo List</Text>
-        <TouchableOpacity style={styles.btnContainer}>
+        <TouchableOpacity style={styles.btnContainer} onPress={() => router.push('/create')}>
           <Text style={styles.headerBtn}>Create Todo</Text>
         </TouchableOpacity>
       </View>
