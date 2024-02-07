@@ -27,9 +27,8 @@ export const TodoContextProvider = ({
   const getTodos = React.useCallback(async () => {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await todoIndexService()
-        const response = await result.json()
-        setTodos(response.data)
+        const response = await todoIndexService()
+        setTodos(response.data.data)
         resolve(response)
       } catch (error) {
         reject(error)
@@ -40,8 +39,8 @@ export const TodoContextProvider = ({
   const createTodo = React.useCallback(async (payload: { title: string }) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await todoCreateService(payload)
-        const response = await result.json()
+        const response = await todoCreateService(payload)
+
         await getTodos()
         resolve(response)
       } catch (error) {
@@ -53,8 +52,8 @@ export const TodoContextProvider = ({
   const updateTodo = React.useCallback(async (id: string, payload: Partial<TTodo>) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await todoUpdateService(id, payload)
-        const response = await result.json()
+        const response = await todoUpdateService(id, payload)
+
         await getTodos()
         resolve(response)
       } catch (error) {
@@ -66,8 +65,8 @@ export const TodoContextProvider = ({
   const deleteTodo = React.useCallback(async (id: string) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await todoDeleteService(id)
-        const response = await result.json()
+        const response = await todoDeleteService(id)
+
         await getTodos()
         resolve(response)
       } catch (error) {

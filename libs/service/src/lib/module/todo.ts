@@ -22,7 +22,7 @@ export function todoCreateService(payload: { title: string }){
     path,
     options: {
       method: 'POST',
-      body: JSON.stringify(payload)
+      data: payload
     }
   })
 }
@@ -34,7 +34,7 @@ export function todoUpdateService(id: string, payload: Partial<TTodo>){
     path,
     options: {
       method: 'PUT',
-      body: JSON.stringify(payload)
+      data: payload
     }
   })
 }

@@ -63,26 +63,24 @@ export default function Index() {
       </div>
       <div className="w-full space-y-2">
         {todos.map((todo) => (
-          <>
-          <div className="flex items-center justify-between">
-            {editedData.id === todo.id ? (
-              <input type="text" value={editedData?.title} onChange={(e) => setEditedData({ ...editedData, title: e.target.value })} />
-            ) : (
-              <div className="flex items-center gap-2">
-                <input onChange={(e) => updateTodo(todo.id, { ...todo, status: e.target.checked })} type="checkbox" className="w-4 h-4" checked={todo.status} />
-                <h2 className={twMerge("text-xl font-semibold text-white", todo.status && 'line-through')}>{todo.title}</h2>
-              </div>
-            )}
-            <div className="space-x-2">
+            <div key={todo.id} className="flex items-center justify-between">
               {editedData.id === todo.id ? (
-                <button onClick={handleUpdateTodo} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white transition duration-300">Save</button>
+                <input type="text" value={editedData?.title} onChange={(e) => setEditedData({ ...editedData, title: e.target.value })} />
               ) : (
-                <button onClick={() => setEditedData(todo)} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white transition duration-300">Edit</button>
+                <div className="flex items-center gap-2">
+                  <input onChange={(e) => updateTodo(todo.id, { ...todo, status: e.target.checked })} type="checkbox" className="w-4 h-4" checked={todo.status} />
+                  <h2 className={twMerge("text-xl font-semibold text-white", todo.status && 'line-through')}>{todo.title}</h2>
+                </div>
               )}
-              <button onClick={() => deleteTodo(todo.id)} className="px-3 py-1 rounded bg-rose-500 hover:bg-rose-600 text-white transition duration-300">Delete</button>
+              <div className="space-x-2">
+                {editedData.id === todo.id ? (
+                  <button onClick={handleUpdateTodo} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white transition duration-300">Save</button>
+                ) : (
+                  <button onClick={() => setEditedData(todo)} className="px-3 py-1 rounded bg-amber-500 hover:bg-amber-600 text-white transition duration-300">Edit</button>
+                )}
+                <button onClick={() => deleteTodo(todo.id)} className="px-3 py-1 rounded bg-rose-500 hover:bg-rose-600 text-white transition duration-300">Delete</button>
+              </div>
             </div>
-          </div>
-          </>
         ))}
       </div>
     </div>
