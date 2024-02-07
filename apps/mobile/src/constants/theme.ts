@@ -6,6 +6,8 @@ const COLORS = {
 
   white: "#F3F4F8",
   lightWhite: "#FAFAFC",
+  danger: '#f43f5e',
+  warning: '#f59e0b'
 };
 
 const SHADOWS = {
@@ -31,4 +33,13 @@ const SHADOWS = {
   },
 };
 
-export { COLORS, SHADOWS };
+const SIZES = {
+  xSmall: 10,
+  small: 12,
+  medium: 16,
+  large: 20,
+  xLarge: 24,
+  xxLarge: 32,
+};
+
+export { COLORS, SHADOWS, SIZES };

@@ -5,7 +5,8 @@ import {
   View,
 } from 'react-native';
 import { Stack } from 'expo-router'
-import Todos from '../components/Todos';
+import Todos from '../components/todos/Todos';
+import { SIZES } from '../constants';
 
 export const App = () => {
   return (
@@ -14,14 +15,19 @@ export const App = () => {
         options={{
           headerStyle: { backgroundColor: '#FAFAFA' },
           headerShadowVisible: true,
-          headerTitle: 'NX Todo'
+          headerTitle: 'NX Todo',
         }}
       />
 
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
       >
-        <View>
+        <View
+          style={{
+            flex: 1,
+            padding: SIZES.medium,
+          }}
+        >
           <Todos />
         </View>
       </ScrollView>
