@@ -21,7 +21,8 @@
     "expo-font": "*",
     "expo-linking": "*",
     "react-native-safe-area-context": "*",
-    "react-native-screens": "*"
+    "react-native-screens": "*",
+    "axios": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/mobile && cp pnpm-lock.yaml apps/mobile",

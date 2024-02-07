@@ -3,7 +3,7 @@ import { TTodo } from '@nx-next-react-native-express/interface'
 import { COLORS, SIZES } from "../../constants"
 import { useRouter } from "expo-router"
 
-const TodoCard = ({ todo }: { todo: TTodo }) => {
+const TodoCard = ({ todo, deleteTodo }: { todo: TTodo, deleteTodo: (id: string) => void }) => {
   const router = useRouter()
 
   return (
@@ -33,7 +33,7 @@ const TodoCard = ({ todo }: { todo: TTodo }) => {
           paddingVertical: SIZES.small / 1.5,
           backgroundColor: COLORS.danger,
           borderRadius: SIZES.small / 1.25,
-        }}>
+        }} onPress={() => deleteTodo(todo.id)}>
           <Text style={{
             color: COLORS.white,
           }}>Delete</Text>
