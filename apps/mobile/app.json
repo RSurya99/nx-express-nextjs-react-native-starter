@@ -28,6 +28,7 @@
       "bundler": "metro"
     },
     "plugins": [
+      "expo-router",
       [
         "@config-plugins/detox",
         {
@@ -35,6 +36,7 @@
           "subdomains": ["10.0.2.2", "localhost"]
         }
       ]
-    ]
+    ],
+    "scheme": "nx-todo"
   }
 }

@@ -1,4 +1,5 @@
 {
+  "main": "index",
   "name": "mobile",
   "version": "0.0.1",
   "private": true,
@@ -14,7 +15,13 @@
     "@expo/metro-config": "*",
     "react-native-svg-transformer": "*",
     "react": "*",
-    "tslib": "*"
+    "tslib": "*",
+    "expo-router": "*",
+    "expo-constants": "*",
+    "expo-font": "*",
+    "expo-linking": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-screens": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/mobile && cp pnpm-lock.yaml apps/mobile",
