@@ -1,8 +1,19 @@
-import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from "react-native"
-import { COLORS } from "../../constants";
+// React
 import { useState } from "react";
-import axios from "axios";
+
+// React Native
+import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from "react-native"
+
+// Expo
 import { useRouter } from "expo-router";
+
+// Axios
+import axios from "axios";
+
+// Constants
+import { COLORS } from "../../constants";
+
+// Style
 import styles from "./create.style";
 
 const CreateTodo = () => {

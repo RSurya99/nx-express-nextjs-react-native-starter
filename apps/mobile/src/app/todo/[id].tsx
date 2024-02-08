@@ -1,9 +1,22 @@
-import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from "react-native"
+// React
 import { useCallback, useEffect, useState } from "react";
+
+// React Native
+import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from "react-native"
+
+// Axios
 import axios from "axios";
+
+// Expo
 import { useGlobalSearchParams, useRouter } from "expo-router";
-import { COLORS, SIZES } from "../../constants";
+
+// Interface
 import { TTodo } from "@nx-next-react-native-express/interface";
+
+// Constant
+import { COLORS, SIZES } from "../../constants";
+
+// Style
 import styles from "./todo.style";
 
 const CreateTodo = () => {

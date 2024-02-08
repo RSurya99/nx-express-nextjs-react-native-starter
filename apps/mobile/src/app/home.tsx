@@ -1,11 +1,20 @@
+// React
 import React from 'react';
+
+// React Native
 import {
   SafeAreaView,
   ScrollView,
   View,
 } from 'react-native';
+
+// Expo
 import { Stack } from 'expo-router'
+
+// Components
 import Todos from '../components/todos/Todos';
+
+// Constants
 import { SIZES } from '../constants';
 
 export const App = () => {
