@@ -1,9 +1,10 @@
-import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useGlobalSearchParams, useRouter } from "expo-router";
 import { COLORS, SIZES } from "../../constants";
 import { TTodo } from "@nx-next-react-native-express/interface";
+import styles from "./todo.style";
 
 const CreateTodo = () => {
   const params = useGlobalSearchParams()
@@ -74,7 +75,7 @@ const CreateTodo = () => {
         gap: SIZES.small
       }}>
         <TextInput
-          style={styles.searchInput}
+          style={styles.input}
           value={todo.title}
           onChangeText={(text) => setTodo({...todo, title: text})}
           placeholder="Input your todo here"
@@ -82,9 +83,9 @@ const CreateTodo = () => {
 
         {error && <Text>{error.message}</Text>}
 
-        <TouchableOpacity style={styles.btnContainer} onPress={updateTodo}>
+        <TouchableOpacity style={styles.btn} onPress={updateTodo}>
           {loading && <ActivityIndicator size='small' color={COLORS.white} />}
-          <Text style={styles.headerBtn}>Update</Text>
+          <Text style={styles.btnText}>Update</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -92,42 +93,3 @@ const CreateTodo = () => {
 }
 
 export default CreateTodo
-
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: SIZES.small,
-  },
-  headerTitle: {
-    fontSize: SIZES.large,
-    color: COLORS.primary,
-  },
-  headerBtn: {
-    fontSize: SIZES.medium,
-    color: COLORS.white,
-  },
-  cardsContainer: {
-    marginTop: SIZES.medium,
-    gap: SIZES.small,
-  },
-  btnContainer: {
-    backgroundColor: COLORS.primary,
-    borderRadius: SIZES.small / 1.25,
-    flexDirection: 'row',
-    justifyContent: "center",
-    alignItems: "center",
-    gap: SIZES.small,
-    paddingHorizontal: SIZES.small,
-    paddingVertical: SIZES.small / 1.5,
-  },
-  searchInput: {
-    paddingHorizontal: SIZES.medium,
-    paddingVertical: SIZES.small / 1.5,
-    borderRadius: SIZES.small / 1.25,
-    backgroundColor: COLORS.lightWhite,
-    borderColor: COLORS.primary,
-    borderWidth: 1,
-  },
-});
