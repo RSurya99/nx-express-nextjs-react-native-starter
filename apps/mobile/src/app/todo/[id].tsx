@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 // React Native
-import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, Switch, Text, TextInput, TouchableOpacity, View } from "react-native"
 
 // Axios
 import axios from "axios";
@@ -93,6 +93,19 @@ const CreateTodo = () => {
           onChangeText={(text) => setTodo({...todo, title: text})}
           placeholder="Input your todo here"
         />
+
+        <View>
+        <Text>Status</Text>
+        <View style={styles.toggleWrapper}>
+          <Switch
+            style={styles.toggle}
+            thumbColor={todo.status ? COLORS.primary : COLORS.lightWhite}
+            value={todo.status}
+            onChange={() => setTodo({...todo, status: !todo.status})}
+          />
+          <Text>{todo.status ? 'finished' : 'not finished'}</Text>
+        </View>
+        </View>
 
         {error && <Text>{error.message}</Text>}
 

@@ -5,31 +5,30 @@ import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../../constants";
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: SIZES.small,
+  cardContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
-  headerTitle: {
-    fontSize: SIZES.large,
-    color: COLORS.primary,
+  actionWrapper: {
+    flexDirection: 'row',
+    gap: SIZES.small / 2
   },
-  headerBtn: {
-    fontSize: SIZES.medium,
-    color: COLORS.white,
-  },
-  cardsContainer: {
-    marginTop: SIZES.medium,
-    gap: SIZES.small,
-  },
-  btnContainer: {
-    backgroundColor: COLORS.primary,
-    borderRadius: SIZES.small / 1.25,
-    justifyContent: "center",
-    alignItems: "center",
+  btnWarning: {
     paddingHorizontal: SIZES.small,
-    paddingVertical: SIZES.small / 1.5
+    paddingVertical: SIZES.small / 1.5,
+    backgroundColor: COLORS.warning,
+    borderRadius: SIZES.small / 1.25,
+  },
+  btnDanger: {
+    paddingHorizontal: SIZES.small,
+    paddingVertical: SIZES.small / 1.5,
+    backgroundColor: COLORS.danger,
+    borderRadius: SIZES.small / 1.25,
+  },
+  btnText: {
+    color: COLORS.white,
   }
 });
 

@@ -45,6 +45,15 @@ const styles = StyleSheet.create({
     fontSize: SIZES.medium,
     color: COLORS.white,
   },
+  toggleWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SIZES.small
+  },
+  toggle: {
+    width: 'auto',
+    alignSelf: 'flex-start',
+  }
 });
 
 export default styles
