@@ -1,11 +1,26 @@
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native"
-import styles from "./todos.style"
-import { COLORS } from "../../constants"
-import { TTodo } from '@nx-next-react-native-express/interface'
-import TodoCard from "../todo/TodoCard"
-import { useRouter } from "expo-router"
+// React
 import { useCallback, useEffect, useState } from "react"
+
+// React Native
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native"
+
+// Expo
+import { useRouter } from "expo-router"
+
+// Axios
 import axios from "axios"
+
+// Components
+import TodoCard from "../todo/TodoCard"
+
+// Interface
+import { TTodo } from '@nx-next-react-native-express/interface'
+
+// Constants
+import { COLORS } from "../../constants"
+
+// Style
+import styles from "./todos.style"
 
 const Todos = () => {
   const router = useRouter()

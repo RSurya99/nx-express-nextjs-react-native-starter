@@ -1,7 +1,14 @@
+// React Native
 import { Text, TouchableOpacity, View } from "react-native"
-import { TTodo } from '@nx-next-react-native-express/interface'
-import { COLORS, SIZES } from "../../constants"
+
+// Expo
 import { useRouter } from "expo-router"
+
+// Interface
+import { TTodo } from '@nx-next-react-native-express/interface'
+
+// Constants
+import { COLORS, SIZES } from "../../constants"
 
 const TodoCard = ({ todo, deleteTodo }: { todo: TTodo, deleteTodo: (id: string) => void }) => {
   const router = useRouter()

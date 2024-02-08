@@ -1,5 +1,7 @@
+// React Native
 import { StyleSheet } from "react-native";
 
+// Constants
 import { COLORS, SIZES } from "../../constants";
 
 const styles = StyleSheet.create({
